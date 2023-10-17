@@ -39,6 +39,15 @@ def getPageData():
         table_data.append(output_row)
 pageNo = 1
 while True:
+    page_table = driver.find_element(By.XPATH, '//*[@id="dnn_ctr1088_ModuleContent"]/table')
+    page_rows = page_table.find_elements(By.TAG_NAME, 'tr')
+    for row in page_rows:
+        last_td = row.find_elements(By.TAG_NAME, 'td')[-2]
+        print(last_td,"111111111111111111111111111111")
+        break
+
+
+
     nextButton = driver.find_element(By.XPATH,'//*[@id="dnn_ctr1088_ModuleContent"]/table/tbody/tr/td[16]')
     wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="dnn_ctr1088_ModuleContent"]/table/tbody/tr/td[16]')))
 
