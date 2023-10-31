@@ -14,13 +14,12 @@ def scrape_data(url):
     element = details.find(id=['content-container'])
     objectData['company'] = element.find('h1').text.strip() if element.find('h1').text.strip() else ''
     for item in element.find(class_='grid-row').find_all('dl'):
-      print(item.find('dt').text.strip(),"-------------", item.find('dd').text.strip())
       objectData[item.find('dt').text.strip()] = item.find('dd').text.strip() if item.find('dd').text.strip() else ""
     objectData['Disqualifications'] = element.find(class_='disqualification').find('h2').text.strip() if element.find(class_='disqualification').find('h2').text.strip() else ''
     for item in element.find(class_='disqualification').find_all('dl'):
       if item.find('dt').text.strip():
         objectData[item.find('dt').text.strip()] = item.find('dd').text.strip() if item.find('dd').text.strip() else ""
-    print(objectData)
+    mainData.append(objectData)
     # heading = element.find_all('h2')
     # objectData['heading'] = heading[0].text.strip()
     # pTags = element.find_all('p')
@@ -38,7 +37,6 @@ def scrape_data(url):
     #       discription = discription+item.text.strip()
     # objectData['reviews'] = discription
     # objectData['Links'] = url
-    # mainData.append(objectData)
     print('------------------------',url,'--------------------------')
   except Exception as e:
     print("------------------",e,'--------------------')
@@ -50,6 +48,7 @@ def scrape_data(url):
 
 
 for page in range(1,11):
+  print("----------------------------------",page,"------------------------------")
   url = "https://find-and-update.company-information.service.gov.uk/register-of-disqualifications/A?page="+str(page)
   payload = {}
   headers = {
