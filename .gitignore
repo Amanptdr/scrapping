@@ -1,1 +1,27 @@
-env
+
+# Ignore specific file
+filename.txt
+
+# Ignore all files with .log extension
+*.log
+*.xlsx
+*.zip
+# Ignore all files in the 'logs' folder
+/logs/
+
+# Ignore all files in the 'temp' folder and its subfolders
+/temp/**
+
+# Ignore all .tmp files in any folder
+*.tmp
+
+# Ignore a specific folder and its content
+/node_modules/
+/env/
+
+# Ignore all .dll files
+*.dll
+
+# Ignore all files with the .DS_Store extension (common on macOS)
+.DS_Store
+
